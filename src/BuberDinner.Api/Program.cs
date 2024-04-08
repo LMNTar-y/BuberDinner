@@ -1,4 +1,4 @@
-using BuberDinner.Api.Filters;
+using BuberDinner.Api.Middlewares;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
 
@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
+builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -16,6 +16,7 @@ var configuration = builder.Configuration;
 builder.Services.AddApplication(configuration);
 builder.Services.AddInfrastructure(configuration);
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
