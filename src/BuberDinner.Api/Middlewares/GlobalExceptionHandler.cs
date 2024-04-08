@@ -11,6 +11,7 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
     {
         var problemDetails = exception switch
         {
+            UserNotFoundException => CreateProblemDetails(exception, HttpStatusCode.NotFound, httpContext),
             DuplicateEmailException => CreateProblemDetails(exception, HttpStatusCode.Conflict, httpContext),
             InvalidPasswordException => CreateProblemDetails(exception, HttpStatusCode.BadRequest, httpContext),
             _ => CreateProblemDetails(exception, HttpStatusCode.InternalServerError, httpContext)
@@ -28,6 +29,7 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
     {
         var type = statusCode switch
         {
+            HttpStatusCode.NotFound => "https://tools.ietf.org/html/rfc7231#section-6.5.4",
             HttpStatusCode.Conflict => "https://tools.ietf.org/html/rfc7231#section-6.5.8",
             HttpStatusCode.BadRequest => "https://tools.ietf.org/html/rfc7231#section-6.5.1",
             _ => "https://tools.ietf.org/html/rfc7231#section-6.6.1"
