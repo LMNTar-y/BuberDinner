@@ -1,6 +1,7 @@
 ﻿using BuberDinner.Application.Authentication.Commands.Register;
 using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Contracts.Authentication;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,10 @@ namespace BuberDinner.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AuthenticationController(ISender mediator) : ControllerBase
+public class AuthenticationController(ISender mediator, IMapper mapper) : ControllerBase
 {
     private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
     /// <summary>
     /// 
@@ -19,20 +21,11 @@ public class AuthenticationController(ISender mediator) : ControllerBase
     [HttpPost("Register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var command = new RegisterUserCommand(
-            request.FirstName,
-            request.LastName,
-            request.Email,
-            request.Password);
+        var command = _mapper.Map<RegisterUserCommand>(request);
 
         var result = await _mediator.Send(command);
 
-        var response = new AuthenticationResponse(
-            result.User.Id,
-            result.User.FirstName,
-            result.User.LastName,
-            result.User.Email,
-            result.Token);
+        var response = _mapper.Map<AuthenticationResponse>(result);
 
         return Ok(response);
     }
@@ -44,18 +37,11 @@ public class AuthenticationController(ISender mediator) : ControllerBase
     [HttpPost("Login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
-        var query = new LoginQuery(
-            request.Email,
-            request.Password);
+        var query = _mapper.Map<LoginQuery>(request);
 
         var result = await _mediator.Send(query);
 
-        var response = new AuthenticationResponse(
-            result.User.Id,
-            result.User.FirstName,
-            result.User.LastName,
-            result.User.Email,
-            result.Token);
+        var response = _mapper.Map<AuthenticationResponse>(result);
 
         return Ok(response);
     }

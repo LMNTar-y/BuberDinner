@@ -1,3 +1,4 @@
+using BuberDinner.Api.Extensions;
 using BuberDinner.Api.Middlewares;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
@@ -13,8 +14,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var configuration = builder.Configuration;
-builder.Services.AddApplication(configuration);
-builder.Services.AddInfrastructure(configuration);
+builder.Services
+    .AddPresentation(configuration)
+    .AddApplication(configuration)
+    .AddInfrastructure(configuration);
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();

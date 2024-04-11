@@ -14,6 +14,8 @@ public class LoginQueryHandler(IUserRepository userRepository, IJwtTokenGenerato
 
     public async Task<AuthenticationResult> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+
         if (_userRepository.GetByEmail(query.Email) is not { } user)
         {
             throw new UserNotFoundException("User with this email does not exist");

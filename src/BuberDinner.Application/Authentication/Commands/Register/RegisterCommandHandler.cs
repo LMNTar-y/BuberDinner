@@ -15,6 +15,8 @@ public class RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGen
 
     public async Task<AuthenticationResult> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+
         if (_userRepository.GetByEmail(command.Email) is not null)
         {
             throw new DuplicateEmailException("User with this email already exists");
