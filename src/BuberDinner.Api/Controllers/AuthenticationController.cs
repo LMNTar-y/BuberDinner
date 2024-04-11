@@ -21,7 +21,7 @@ public class AuthenticationController(ISender mediator, IMapper mapper) : Contro
     [HttpPost("Register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var command = _mapper.Map<RegisterUserCommand>(request);
+        var command = _mapper.Map<RegisterCommand>(request);
 
         var result = await _mediator.Send(command);
 

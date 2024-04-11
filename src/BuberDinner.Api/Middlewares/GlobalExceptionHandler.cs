@@ -14,12 +14,23 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
             UserNotFoundException => CreateProblemDetails(exception, HttpStatusCode.NotFound, httpContext),
             DuplicateEmailException => CreateProblemDetails(exception, HttpStatusCode.Conflict, httpContext),
             InvalidPasswordException => CreateProblemDetails(exception, HttpStatusCode.BadRequest, httpContext),
+            ValidationException validationException => CreateValidationProblemDetails(validationException, HttpStatusCode.UnprocessableEntity, httpContext),
             _ => CreateProblemDetails(exception, HttpStatusCode.InternalServerError, httpContext)
         };
 
+
         httpContext.Response.StatusCode = problemDetails.Status!.Value;
-        await httpContext.Response
-            .WriteAsJsonAsync(problemDetails, cancellationToken);
+
+        if (problemDetails is ValidationProblemDetails validationProblemDetails)
+        {
+            await httpContext.Response
+                .WriteAsJsonAsync(validationProblemDetails, cancellationToken);
+        }
+        else
+        {
+            await httpContext.Response
+                .WriteAsJsonAsync(problemDetails, cancellationToken);
+        }
 
         return true;
     }
@@ -34,12 +45,24 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
             HttpStatusCode.BadRequest => "https://tools.ietf.org/html/rfc7231#section-6.5.1",
             _ => "https://tools.ietf.org/html/rfc7231#section-6.6.1"
         };
-
+        
         return new ProblemDetails()
         {
             Status = (int)statusCode,
             Title = exception.Message,
             Type = type,
+            Instance = httpContext.Request.Path
+        };
+    }
+
+    private static ValidationProblemDetails CreateValidationProblemDetails(ValidationException exception,
+        HttpStatusCode statusCode, HttpContext httpContext)
+    {
+        return new ValidationProblemDetails(exception.ErrorsDictionary)
+        {
+            Status = (int)statusCode,
+            Title = exception.Message,
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
             Instance = httpContext.Request.Path
         };
     }

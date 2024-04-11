@@ -8,12 +8,12 @@ using MediatR;
 namespace BuberDinner.Application.Authentication.Commands.Register;
 
 public class RegisterCommandHandler(IUserRepository userRepository, IJwtTokenGenerator jwtTokenGenerator)
-    : IRequestHandler<RegisterUserCommand, AuthenticationResult>
+    : IRequestHandler<RegisterCommand, AuthenticationResult>
 {
     private readonly IUserRepository _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
     private readonly IJwtTokenGenerator _jwtTokenGenerator = jwtTokenGenerator ?? throw new ArgumentNullException(nameof(jwtTokenGenerator));
 
-    public async Task<AuthenticationResult> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
+    public async Task<AuthenticationResult> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
 
