@@ -3,12 +3,14 @@ using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Contracts.Authentication;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuberDinner.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[AllowAnonymous]
 public class AuthenticationController(ISender mediator, IMapper mapper) : ControllerBase
 {
     private readonly ISender _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
