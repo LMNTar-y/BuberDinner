@@ -9,13 +9,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CAA047F9-415
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2DCB6A9B-DD7D-44F9-99BD-A1C672A02A4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Contracts", "src\BuberDinner.Contracts\BuberDinner.Contracts.csproj", "{9E817BB4-A2B1-411F-84C3-96F0C81FF512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Contracts", "src\BuberDinner.Contracts\BuberDinner.Contracts.csproj", "{9E817BB4-A2B1-411F-84C3-96F0C81FF512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Infrastructure", "src\BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj", "{20C991FA-D2A2-4456-A1BC-3441AB02A9AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Infrastructure", "src\BuberDinner.Infrastructure\BuberDinner.Infrastructure.csproj", "{20C991FA-D2A2-4456-A1BC-3441AB02A9AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Application", "src\BuberDinner.Application\BuberDinner.Application.csproj", "{06ADC045-9DA4-4F0A-8EF8-6D225BE11976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Application", "src\BuberDinner.Application\BuberDinner.Application.csproj", "{06ADC045-9DA4-4F0A-8EF8-6D225BE11976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuberDinner.Domain", "src\BuberDinner.Domain\BuberDinner.Domain.csproj", "{E1DB34C5-4A07-4057-98CE-D57C963B99D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuberDinner.Domain", "src\BuberDinner.Domain\BuberDinner.Domain.csproj", "{E1DB34C5-4A07-4057-98CE-D57C963B99D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{111F0A24-A8EE-4E23-9E31-05AF501DF55F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{1507B4B3-3763-4837-BA86-C6C6546CD0A6}"
+	ProjectSection(SolutionItems) = preProject
+		Aggregates.Menu.md = Aggregates.Menu.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +60,7 @@ Global
 		{20C991FA-D2A2-4456-A1BC-3441AB02A9AD} = {CAA047F9-415D-46A3-97D9-D7EF6B49F63B}
 		{06ADC045-9DA4-4F0A-8EF8-6D225BE11976} = {CAA047F9-415D-46A3-97D9-D7EF6B49F63B}
 		{E1DB34C5-4A07-4057-98CE-D57C963B99D9} = {CAA047F9-415D-46A3-97D9-D7EF6B49F63B}
+		{1507B4B3-3763-4837-BA86-C6C6546CD0A6} = {111F0A24-A8EE-4E23-9E31-05AF501DF55F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4E78C56E-6F08-42A8-8801-7F4FB1E14726}
