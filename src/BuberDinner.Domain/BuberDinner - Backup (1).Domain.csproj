@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Menu\Entities\" />
+    <Folder Include="Menu\Host\" />
   </ItemGroup>
 
 </Project>

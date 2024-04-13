@@ -21,7 +21,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{111F0A24-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DomainModels", "DomainModels", "{1507B4B3-3763-4837-BA86-C6C6546CD0A6}"
 	ProjectSection(SolutionItems) = preProject
-		Aggregates.Menu.md = Aggregates.Menu.md
+		Bill.md = Bill.md
+		Dinner.md = Dinner.md
+		Guest.md = Guest.md
+		Host.md = Host.md
+		Menu Review.md = Menu Review.md
+		Menu.md = Menu.md
+		User.md = User.md
 	EndProjectSection
 EndProject
 Global

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Menu\Entities\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
