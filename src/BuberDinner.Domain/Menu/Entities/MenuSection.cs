@@ -11,7 +11,7 @@ public class MenuSection : Entity<MenuSectionId>
         Description = description;
     }
 
-    private readonly List<MenuItem> _items = new();
+    private List<MenuItem> _items = new();
     public string Name { get; set; }
     public string Description { get; set; }
 
@@ -20,5 +20,22 @@ public class MenuSection : Entity<MenuSectionId>
     public static MenuSection Create(string name, string description)
     {
         return new MenuSection(MenuSectionId.CreateUnique(), name, description);
+    }
+
+    public void AddItem(MenuItem item)
+    {
+        _items.Add(item);
+    }
+
+    public void RemoveItem(MenuItem item)
+    {
+        _items.Remove(item);
+    }
+
+    public void Update(MenuSection section)
+    {
+        Name = section.Name;
+        Description = section.Description;
+        _items = section._items;
     }
 }
