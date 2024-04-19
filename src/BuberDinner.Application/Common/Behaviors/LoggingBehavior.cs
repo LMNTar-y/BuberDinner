@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BuberDinner.Application.Common.Behaviors;
 
-public class LoggingBehavior<TRequest, TResponse>(IValidator<TRequest>? validator, ILogger<LoggingBehavior<TRequest, TResponse>> logger)
+public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TRequest, TResponse>> logger)
     : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {

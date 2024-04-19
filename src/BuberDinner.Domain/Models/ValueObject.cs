@@ -54,7 +54,7 @@ public abstract class ValueObject : IEquatable<ValueObject>, IEqualityComparer<V
         return obj.GetHashCode();
     }
 
-    public ValueObject GetCopy()
+    public ValueObject? GetCopy()
     {
         return MemberwiseClone() as ValueObject;
     }
