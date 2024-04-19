@@ -19,8 +19,4 @@
     <ProjectReference Include="..\BuberDinner.Domain\BuberDinner.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Common\Behaviors\" />
-  </ItemGroup>
-
 </Project>
