@@ -17,9 +17,14 @@ public class AuthenticationController(ISender mediator, IMapper mapper) : Contro
     private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
     /// <summary>
-    /// 
+    /// Register Request.
     /// </summary>
-    /// <returns></returns>
+    /// <param name="request">RegisterRequest.</param>
+    /// <response code="200">Ok. Token.</response>
+    /// <response code="400">Bad request.</response>
+    /// <response code="500">Unexpected error.</response>
+    /// <returns><see cref="AuthenticationResponse"/> AuthenticationResponse.</returns>
+    [ProducesResponseType(typeof(AuthenticationResponse), 200)]
     [HttpPost("Register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
@@ -33,9 +38,13 @@ public class AuthenticationController(ISender mediator, IMapper mapper) : Contro
     }
 
     /// <summary>
-    /// 
+    /// Login Request.
     /// </summary>
-    /// <returns></returns>
+    /// <param name="request">LoginRequest.</param>
+    /// <response code="200">Ok. Token.</response>
+    /// <response code="400">Bad request.</response>
+    /// <response code="500">Unexpected error.</response>
+    /// <returns><see cref="AuthenticationResponse"/> AuthenticationResponse.</returns>
     [HttpPost("Login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
