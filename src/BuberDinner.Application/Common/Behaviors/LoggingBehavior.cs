@@ -28,7 +28,7 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError(e, "BuberDinner Request: {@Name} failed, message: {@Message}", requestName, e.Message);
             throw;
         }
         finally

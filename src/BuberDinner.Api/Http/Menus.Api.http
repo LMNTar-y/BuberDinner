@@ -1,0 +1,31 @@
+@BuberDinner.Host = https://localhost:7295/hosts
+
+@hostId = asdf
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzZTc0ZTk4OS1kODg0LTRmYWYtOTY2My02MTNlM2RhNjg2ZWIiLCJnaXZlbl9uYW1lIjoiRmlyc3ROYW1lIiwiZmFtaWx5X25hbWUiOiJMYXN0TmFtZSIsImp0aSI6IjA1M2EzMmVkLWYwYjEtNGJlYS05N2E4LThlZTA3ZmRiNDRjNCIsImV4cCI6MTcxMzYxMzkwNCwiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.dPkZjEaId0isJ0yC1rhYZq9Kuf1_gl6aN0o264UBCSA
+
+POST {{BuberDinner.Host}}/{{hostId}}/menus
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Menu 1",
+  "description": "Menu 1 description",
+  "sections": [
+  {
+	  "name": "Section 1",
+	  "description": "Section 1 description",
+	  "items": [
+		{
+		  "name": "Item 1",
+		  "description": "Item 1 description"
+		},
+		{
+		  "name": "Item 2",
+		  "description": "Item 2 description"
+		}
+	  ]
+	}]
+}
+###
