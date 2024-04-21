@@ -2,6 +2,8 @@
 using BuberDinner.Contracts.Menus;
 using BuberDinner.Domain.Menu;
 using Mapster;
+using MenuItem = BuberDinner.Domain.Menu.Entities.MenuItem;
+using MenuSection = BuberDinner.Domain.Menu.Entities.MenuSection;
 
 namespace BuberDinner.Api.Mapping
 {
@@ -14,12 +16,16 @@ namespace BuberDinner.Api.Mapping
                 .Map(dest => dest, source => source.Request);
 
             config.NewConfig<Menu, MenuResponse>()
+                .Map(dest => dest.Id, src => src.Id.Value)
+                .Map(dest => dest.HostId, src => src.HostId.Value)
+                .Map(dest => dest.AverageRating, src => src.AverageRating)
+                .Map(dest => dest.DinnerIds, src => src.DinnerIds.Select(dinnerId => dinnerId.Value))
+                .Map(dest => dest.MenuReviewIds, src => src.MenuReviewIds.Select(menuReviewId => menuReviewId.Value));
+
+            config.NewConfig<MenuSection, MenuSectionResponse>()
                 .Map(dest => dest.Id, src => src.Id.Value);
 
-            config.NewConfig<Domain.Menu.Entities.MenuSection, MenuSectionResponse>()
-                .Map(dest => dest.Id, src => src.Id.Value);
-
-            config.NewConfig<Domain.Menu.Entities.MenuItem, MenuItemResponse>()
+            config.NewConfig<MenuItem, MenuItemResponse>()
                 .Map(dest => dest.Id, src => src.Id.Value);
         }
     }

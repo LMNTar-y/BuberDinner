@@ -29,8 +29,11 @@ public class MenusController(ISender mediator, IMapper mapper) : ControllerBase
     public async Task<IActionResult> CreateMenu(string hostId, CreateMenuRequest request)
     {
         var command = _mapper.Map<CreateMenuCommand>((request, hostId));
+
         var createMenuResult = await _mediator.Send(command);
+
         var result = _mapper.Map<MenuResponse>(createMenuResult);
+
         return Ok(result);
     }
 }

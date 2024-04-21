@@ -14,6 +14,8 @@ namespace BuberDinner.Application.Menus.Commands.CreateMenu
                 .NotEmpty();
             RuleFor(v => v.HostId)
                 .NotEmpty();
+            RuleFor(v => v.Sections)
+                .NotEmpty();
         }
     }
 }
