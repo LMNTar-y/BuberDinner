@@ -17,19 +17,17 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
             Title = exception.Message,
             Type = type,
             Instance = httpContext.Request.Path,
-            Errors = GetErrors(exception)
+            Errors = GetErrors(exception),
         };
-
-
         httpContext.Response.StatusCode = problemDetails.Status;
 
         await httpContext.Response
                 .WriteAsJsonAsync(problemDetails, cancellationToken);
-        
+
         return true;
     }
 
-    private string GetDescriptionLink(HttpStatusCode statusCode) => statusCode switch
+    private static string GetDescriptionLink(HttpStatusCode statusCode) => statusCode switch
     {
         HttpStatusCode.NotFound => "https://tools.ietf.org/html/rfc7231#section-6.5.4",
         HttpStatusCode.Conflict => "https://tools.ietf.org/html/rfc7231#section-6.5.8",
@@ -38,7 +36,7 @@ internal sealed class GlobalExceptionHandler : IExceptionHandler
         _ => "https://tools.ietf.org/html/rfc7231#section-6.6.1"
     };
 
-    private HttpStatusCode GetStatusCode(Exception exception) => exception switch
+    private static HttpStatusCode GetStatusCode(Exception exception) => exception switch
     {
         UserNotFoundException => HttpStatusCode.NotFound,
         DuplicateEmailException => HttpStatusCode.Conflict,

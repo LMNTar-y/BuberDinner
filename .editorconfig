@@ -235,6 +235,7 @@ dotnet_diagnostic.SA1101.severity = none
 dotnet_diagnostic.SA1600.severity = none
 dotnet_diagnostic.SA1009.severity = none
 dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1010.severity = none
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
