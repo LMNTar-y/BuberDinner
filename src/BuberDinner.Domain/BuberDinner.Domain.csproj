@@ -4,14 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	  <NoWarn>8618, 4136</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Bill\Entities\" />
-    <Folder Include="Dinner\Entities\" />
-    <Folder Include="Guest\ValuesObjects\" />
-    <Folder Include="Menu\Entities\" />
-    <Folder Include="User\ValueObjects\" />
-  </ItemGroup>
 
 </Project>

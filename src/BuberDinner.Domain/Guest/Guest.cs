@@ -36,7 +36,7 @@ public class Guest : AggregateRoot<GuestId>
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string ProfileImage { get; private set; }
-    public UserId UserId { get; }
+    public UserId UserId { get; private set; }
 
     public IReadOnlyList<DinnerId> UpcomingDinnerIds => _upcomingDinnerIds.AsReadOnly();
     public IReadOnlyList<DinnerId> PastDinnerIds => _pastDinnerIds.AsReadOnly();
@@ -44,7 +44,7 @@ public class Guest : AggregateRoot<GuestId>
     public IReadOnlyList<MenuReviewId> MenuReviewIds => _menuReviewIds.AsReadOnly();
     public IReadOnlyList<GuestRating> Ratings => _ratings.AsReadOnly();
 
-    public DateTime CreatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
     public DateTime UpdatedDateTime { get; private set; }
 
     public void UpdateProfile(string firstName, string lastName, string profileImage)
@@ -99,5 +99,9 @@ public class Guest : AggregateRoot<GuestId>
             profileImage,
             DateTime.UtcNow,
             DateTime.UtcNow);
+    }
+
+    private Guest()
+    {
     }
 }

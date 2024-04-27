@@ -10,12 +10,16 @@ public class MenuItem : Entity<MenuItemId>
         Name = name;
         Description = description;
     }
-
+    
     public string Name { get; set; }
     public string Description { get; set; }
 
     public static MenuItem Create(string name, string description)
     {
         return new MenuItem(MenuItemId.CreateUnique(), name, description);
+    }
+
+    private MenuItem()
+    {
     }
 }

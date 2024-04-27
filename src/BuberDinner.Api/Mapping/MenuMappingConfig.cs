@@ -1,5 +1,6 @@
 ﻿using BuberDinner.Application.Menus.Commands.CreateMenu;
 using BuberDinner.Contracts.Menus;
+using BuberDinner.Domain.Common.ValueObjects;
 using BuberDinner.Domain.Menu;
 using Mapster;
 using MenuItem = BuberDinner.Domain.Menu.Entities.MenuItem;
@@ -18,7 +19,7 @@ namespace BuberDinner.Api.Mapping
             config.NewConfig<Menu, MenuResponse>()
                 .Map(dest => dest.Id, src => src.Id.Value)
                 .Map(dest => dest.HostId, src => src.HostId.Value)
-                .Map(dest => dest.AverageRating, src => src.AverageRating)
+                .Map(dest => dest.AverageRating, src => AverageRatingMap(src.AverageRating))
                 .Map(dest => dest.DinnerIds, src => src.DinnerIds.Select(dinnerId => dinnerId.Value))
                 .Map(dest => dest.MenuReviewIds, src => src.MenuReviewIds.Select(menuReviewId => menuReviewId.Value));
 
@@ -27,6 +28,16 @@ namespace BuberDinner.Api.Mapping
 
             config.NewConfig<MenuItem, MenuItemResponse>()
                 .Map(dest => dest.Id, src => src.Id.Value);
+        }
+
+        private float? AverageRatingMap(AverageRating? averageRating)
+        {
+            if (averageRating is { } rating)
+            {
+                return rating.Value;
+            }
+
+            return null;
         }
     }
 }

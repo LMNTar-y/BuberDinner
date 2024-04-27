@@ -31,6 +31,11 @@ public class HostId : ValueObject
         return new HostId(guidHostId);
     }
 
+    public static HostId Create(Guid hostId)
+    {
+        return new HostId(hostId);
+    }
+
     // Implicit conversion from string to HostId
     public static implicit operator HostId(string value)
     {

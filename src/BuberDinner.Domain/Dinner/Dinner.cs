@@ -44,22 +44,22 @@ public sealed class Dinner : AggregateRoot<DinnerId>
         UpdatedDateTime = updatedDateTime;
     }
 
-    public string Name { get; }
-    public string Description { get; }
-    public DateTime StartDateTime { get; }
-    public DateTime EndDateTime { get; }
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public DateTime StartDateTime { get; private set; }
+    public DateTime EndDateTime { get; private set; }
     public DateTime StartedDateTime { get; private set; }
     public DateTime EndedDateTime { get; private set; }
     public DinnerStatus Status { get; private set; } // Upcoming, InProgress, Ended, Cancelled
-    public bool IsPublic { get; }
-    public int MaxGuests { get; }
-    public Price Price { get; }
-    public HostId HostId { get; }
-    public MenuId MenuId { get; }
-    public string ImageUrl { get; }
-    public Location Location { get; }
+    public bool IsPublic { get; private set; }
+    public int MaxGuests { get; private set; }
+    public Price Price { get; private set; }
+    public HostId HostId { get; private set; }
+    public MenuId MenuId { get; private set; }
+    public string ImageUrl { get; private set; }
+    public Location Location { get; private set; }
     public IReadOnlyList<Reservation> Reservations => _reservations.AsReadOnly();
-    public DateTime CreatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
     public DateTime UpdatedDateTime { get; private set; }
 
     public static Dinner Create(
@@ -121,5 +121,9 @@ public sealed class Dinner : AggregateRoot<DinnerId>
     {
         _reservations.Remove(reservation);
         UpdatedDateTime = DateTime.UtcNow;
+    }
+
+    private Dinner()
+    {
     }
 }

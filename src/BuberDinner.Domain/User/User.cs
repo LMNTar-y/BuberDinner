@@ -22,12 +22,16 @@ public class User : AggregateRoot<UserId>
         UpdatedDateTime = updatedDateTime;
     }
 
+    private User() : base()
+    {
+    }
+
     public string FirstName { get; private set; } 
     public string LastName { get; private set; }
     public string Email { get; private set; } 
     public string Password { get; private set; }
 
-    public DateTime CreatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
     public DateTime UpdatedDateTime { get; private set; }
 
     public void UpdateProfile(string firstName, string lastName)

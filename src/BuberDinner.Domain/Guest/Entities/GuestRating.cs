@@ -21,10 +21,10 @@ public class GuestRating : Entity<GuestRatingId>
         UpdatedDateTime = updatedDateTime;
     }
 
-    public HostId HostId { get; }
-    public DinnerId DinnerId { get; }
+    public HostId HostId { get; private set; }
+    public DinnerId DinnerId { get; private set; }
     public int Rating { get; private set; }
-    public DateTime CreatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
     public DateTime UpdatedDateTime { get; private set; }
 
     public static GuestRating CreateNew(HostId hostId,
@@ -44,5 +44,9 @@ public class GuestRating : Entity<GuestRatingId>
     {
         Rating = rating;
         UpdatedDateTime = DateTime.UtcNow;
+    }
+
+    private GuestRating()
+    {
     }
 }

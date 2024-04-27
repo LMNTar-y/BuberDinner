@@ -25,11 +25,11 @@ public class Reservation : Entity<ReservationId>
 
     public int GuestCount { get; private set; }
     public ReservationStatus Status { get; private set; } // PendingGuestConfirmation, Reserved, Cancelled
-    public GuestId GuestId { get; }
-    public BillId BillId { get; }
+    public GuestId GuestId { get; private set; }
+    public BillId BillId { get; private set; }
     public DateTime ArrivalDateTime { get; private set; }
-    public DateTime CreatedDateTime { get; }
-    public DateTime UpdatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
+    public DateTime UpdatedDateTime { get; private set; }
 
     public static Reservation CreateNew(int guestCount,
         GuestId guestId, 
@@ -58,5 +58,9 @@ public class Reservation : Entity<ReservationId>
     public void UpdateGuestCount(int guestCount)
     {
         GuestCount = guestCount;
+    }
+
+    private Reservation()
+    {
     }
 }

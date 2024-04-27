@@ -30,13 +30,17 @@ public class MenuReview : AggregateRoot<MenuReviewId>
         UpdatedDateTime = updatedDateTime;
     }
 
+    private MenuReview() : base()
+    {
+    }
+
     public int Rating { get; private set; }
     public string Comment { get; private set; }
-    public HostId HostId { get; }
-    public MenuId MenuId { get; }
-    public GuestId GuestId { get; }
-    public DinnerId DinnerId { get; }
-    public DateTime CreatedDateTime { get; }
+    public HostId HostId { get; private set; }
+    public MenuId MenuId { get; private set; }
+    public GuestId GuestId { get; private set; }
+    public DinnerId DinnerId { get; private set; }
+    public DateTime CreatedDateTime { get; private set; }
     public DateTime UpdatedDateTime { get; private set; }
 
     public void Update(int rating, string comment)

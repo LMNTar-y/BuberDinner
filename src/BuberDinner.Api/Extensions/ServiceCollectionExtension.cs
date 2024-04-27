@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using BuberDinner.Api.Middlewares;
 using Mapster;
 using MapsterMapper;
 
@@ -9,6 +10,8 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddMappings();
+        services.AddExceptionHandler<GlobalExceptionHandler>();
+        services.AddProblemDetails();
 
         return services;
     }

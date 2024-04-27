@@ -13,7 +13,7 @@ public class CreateMenuCommandHandler(IMenuRepository menuRepository) : IRequest
     {
         await Task.CompletedTask;
             
-        var menu = Menu.Create(command.Name, command.Description,command.HostId);
+        var menu = Menu.Create(command.Name, command.Description, command.HostId);
 
         foreach (var section in command.Sections)
         {

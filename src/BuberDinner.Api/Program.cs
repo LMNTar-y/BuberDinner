@@ -1,5 +1,4 @@
 using BuberDinner.Api.Extensions;
-using BuberDinner.Api.Middlewares;
 using BuberDinner.Application;
 using BuberDinner.Infrastructure;
 
@@ -17,9 +16,6 @@ builder.Services
     .AddPresentation(configuration)
     .AddApplication(configuration)
     .AddInfrastructure(configuration);
-
-builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 

@@ -38,4 +38,8 @@ public class MenuSection : Entity<MenuSectionId>
         Description = section.Description;
         _items = section._items;
     }
+
+    private MenuSection()
+    {
+    }
 }

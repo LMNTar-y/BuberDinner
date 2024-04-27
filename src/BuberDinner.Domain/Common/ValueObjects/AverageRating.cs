@@ -4,16 +4,16 @@ namespace BuberDinner.Domain.Common.ValueObjects;
 
 public class AverageRating : ValueObject
 {
-    private AverageRating(double value, int numRating)
+    private AverageRating(float value, int numRating)
     {
         Value = value;
         NumRating = numRating;
     }
 
-    public double Value { get; private set; }
+    public float Value { get; private set; }
     public int NumRating { get; private set; }
 
-    public static AverageRating CreateNew(double value, int numRating)
+    public static AverageRating CreateNew(float value, int numRating)
     {
         return new AverageRating(value, numRating);
     }

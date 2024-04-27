@@ -33,13 +33,13 @@ public class Host : AggregateRoot<HostId>
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string ProfileImage { get; private set; }
-    public UserId UserId { get; }
+    public UserId UserId { get; private set; }
     public double AverageRating { get; private set; }
 
     public IReadOnlyList<DinnerId> DinnerIds => _dinnerIds.AsReadOnly();
     public IReadOnlyList<MenuId> MenuIds => _menuIds.AsReadOnly();
 
-    public DateTime CreatedDateTime { get; }
+    public DateTime CreatedDateTime { get; private set; }
     public DateTime UpdatedDateTime { get; private set; }
 
     public void UpdateProfile(string firstName, string lastName, string profileImage)
@@ -101,5 +101,9 @@ public class Host : AggregateRoot<HostId>
                                   profileImage,
                                   DateTime.UtcNow,
                                   DateTime.UtcNow);
+    }
+
+    private Host()
+    {
     }
 }

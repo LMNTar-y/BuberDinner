@@ -4,14 +4,14 @@ namespace BuberDinner.Domain.Common.ValueObjects;
 
 public class Rating : ValueObject
 {
-    private Rating(double value)
+    private Rating(float value)
     {
         Value = value;
     }
 
-    public double Value { get; private set; }
+    public float Value { get; private set; }
 
-    public static Rating CreateNew(double value)
+    public static Rating CreateNew(float value)
     {
         return new Rating(value);
     }
