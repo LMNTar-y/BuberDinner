@@ -2,14 +2,14 @@
 
 namespace BuberDinner.Domain.User.ValueObjects;
 
-public class UserId : ValueObject
+public class UserId : AggregateRootId<Guid>
 {
     private UserId(Guid value)
     {
         Value = value;
     }
 
-    public Guid Value { get; }
+    public override Guid Value { get; protected set; }
 
     public static UserId Create()
     {

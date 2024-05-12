@@ -8,7 +8,7 @@ using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.Guest;
 
-public class Guest : AggregateRoot<GuestId>
+public class Guest : AggregateRoot<GuestId, Guid>
 {
     private List<DinnerId> _upcomingDinnerIds = new();
     private List<DinnerId> _pastDinnerIds = new();
@@ -31,6 +31,10 @@ public class Guest : AggregateRoot<GuestId>
         ProfileImage = profileImage;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
+    }
+
+    private Guest()
+    {
     }
 
     public string FirstName { get; private set; }
@@ -99,9 +103,5 @@ public class Guest : AggregateRoot<GuestId>
             profileImage,
             DateTime.UtcNow,
             DateTime.UtcNow);
-    }
-
-    private Guest()
-    {
     }
 }

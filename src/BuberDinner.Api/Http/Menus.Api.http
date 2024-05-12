@@ -1,8 +1,8 @@
 @BuberDinner.Host = https://localhost:7295/hosts
 
-@hostId = 8B16A20F-B0E9-4010-BA92-1A1EDD139AD5
+@hostId = 8B16A20F-B0E9-4010-BA92-1A1EDD139AD6
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhODgxZWU0Yy04YmI2LTRiYzktOTk5OC0xNzU2YTIwMTUwM2IiLCJnaXZlbl9uYW1lIjoiRmlyc3ROYW1lIiwiZmFtaWx5X25hbWUiOiJMYXN0TmFtZSIsImp0aSI6IjA0ZTVlZGQyLTkzYjMtNDdhNy05ZGJmLWI0MjRhM2JjYjRlYiIsImV4cCI6MTcxNDIzNzQyMywiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.OjbR7kfUHEfjXZwR3_eIr2uFE8Nixl8VBJljcIkPgoc
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlOTY3OTBkZC1kYmIzLTRkYWMtYjExNS1iZTM1NWU3OTgxYTciLCJnaXZlbl9uYW1lIjoiRmlyc3ROYW1lIiwiZmFtaWx5X25hbWUiOiJMYXN0TmFtZSIsImp0aSI6IjAyYzg5MGRkLTY2NmYtNDdmNi1hZGU1LTJjNGUwMzY4MjJhYyIsImV4cCI6MTcxNTUyODYyMCwiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.FBDPRzjioTFXWSm4hQvuH8BflcbgAii1M3UOnyetij4
 
 POST {{BuberDinner.Host}}/{{hostId}}/menus
 Accept: application/json
@@ -10,8 +10,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "Menu 1",
-  "description": "Menu 1 description",
+  "name": "Menu 2",
+  "description": "Menu 2 description",
   "sections": [
   {
 	  "name": "Section 1",

@@ -17,7 +17,7 @@ namespace BuberDinner.Api.Mapping
                 .Map(dest => dest, source => source.Request);
 
             config.NewConfig<Menu, MenuResponse>()
-                .Map(dest => dest.Id, src => src.Id.Value)
+                .Map(dest => dest.Id, src => src.IdValue)
                 .Map(dest => dest.HostId, src => src.HostId.Value)
                 .Map(dest => dest.AverageRating, src => AverageRatingMap(src.AverageRating))
                 .Map(dest => dest.DinnerIds, src => src.DinnerIds.Select(dinnerId => dinnerId.Value))

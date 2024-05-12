@@ -8,7 +8,7 @@ using BuberDinner.Domain.Models;
 
 namespace BuberDinner.Domain.Menu;
 
-public sealed class Menu : AggregateRoot<MenuId>
+public sealed class Menu : AggregateRoot<MenuId, Guid>
 {
     private readonly List<MenuSection> _sections = new();
     private readonly List<DinnerId> _dinnerIds = new();
@@ -34,12 +34,15 @@ public sealed class Menu : AggregateRoot<MenuId>
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
     }
+    private Menu()
+    { }
 
     public static Menu Create(
         string name, 
         string description, 
         HostId hostId)
     {
+        var MenuIdTest = MenuId.CreateUnique();
         return new Menu(
             MenuId.CreateUnique(),
             name, 
@@ -72,7 +75,4 @@ public sealed class Menu : AggregateRoot<MenuId>
         existingSection.Update(section);
         UpdatedDateTime = DateTime.UtcNow;
     }
-
-    private Menu()
-    {}
 }

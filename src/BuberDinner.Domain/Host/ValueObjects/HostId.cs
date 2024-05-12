@@ -2,14 +2,14 @@
 
 namespace BuberDinner.Domain.Host.ValueObjects;
 
-public class HostId : ValueObject
+public class HostId : AggregateRootId<Guid>
 {
     private HostId(Guid value)
     {
         Value = value;
     }
 
-    public Guid Value { get; }
+    public sealed override Guid Value { get; protected set; }
 
     public static HostId CreateUnique()
     {

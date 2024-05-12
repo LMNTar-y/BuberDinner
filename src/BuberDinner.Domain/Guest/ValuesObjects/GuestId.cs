@@ -2,14 +2,14 @@
 
 namespace BuberDinner.Domain.Guest.ValuesObjects;
 
-public class GuestId : ValueObject
+public class GuestId : AggregateRootId<Guid>
 {
     private GuestId(Guid value)
     {
         Value = value;
     }
 
-    public Guid Value { get; }
+    public override Guid Value { get; protected set; }
 
     public static GuestId CreateUnique()
     {

@@ -7,7 +7,7 @@ using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.Host;
 
-public class Host : AggregateRoot<HostId>
+public class Host : AggregateRoot<HostId, Guid>
 {
     private readonly List<DinnerId> _dinnerIds = new();
     private readonly List<MenuId> _menuIds = new();
@@ -28,6 +28,9 @@ public class Host : AggregateRoot<HostId>
         ProfileImage = profileImage;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
+    }
+    private Host()
+    {
     }
 
     public string FirstName { get; private set; }
@@ -101,9 +104,5 @@ public class Host : AggregateRoot<HostId>
                                   profileImage,
                                   DateTime.UtcNow,
                                   DateTime.UtcNow);
-    }
-
-    private Host()
-    {
     }
 }

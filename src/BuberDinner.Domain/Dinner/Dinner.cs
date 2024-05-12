@@ -7,7 +7,7 @@ using BuberDinner.Domain.Models;
 
 namespace BuberDinner.Domain.Dinner;
 
-public sealed class Dinner : AggregateRoot<DinnerId>
+public sealed class Dinner : AggregateRoot<DinnerId, Guid>
 {
 
     private readonly List<Reservation> _reservations = new();
@@ -42,6 +42,10 @@ public sealed class Dinner : AggregateRoot<DinnerId>
         Location = location;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
+    }
+
+    private Dinner()
+    {
     }
 
     public string Name { get; private set; }
@@ -121,9 +125,5 @@ public sealed class Dinner : AggregateRoot<DinnerId>
     {
         _reservations.Remove(reservation);
         UpdatedDateTime = DateTime.UtcNow;
-    }
-
-    private Dinner()
-    {
     }
 }

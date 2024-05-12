@@ -2,13 +2,13 @@
 
 namespace BuberDinner.Domain.Guest.ValuesObjects;
 
-public class GuestRatingId : ValueObject
+public class GuestRatingId : AggregateRootId<Guid>
 {
     private GuestRatingId(Guid value)
     {
         Value = value;
     }
-    public Guid Value { get; set; }
+    public override Guid Value { get; protected set; }
 
     public static GuestRatingId CreateNew()
     {

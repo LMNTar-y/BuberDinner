@@ -2,14 +2,14 @@
 
 namespace BuberDinner.Domain.Menu.ValueObjects;
 
-public class MenuSectionId : ValueObject
+public class MenuSectionId : AggregateRootId<Guid>
 {
     private MenuSectionId(Guid value)
     {
         Value = value;
     }
 
-    public Guid Value { get; }
+    public override Guid Value { get; protected set; }
 
     public static MenuSectionId CreateUnique()
     {

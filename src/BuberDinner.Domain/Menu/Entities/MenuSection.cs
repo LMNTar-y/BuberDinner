@@ -10,6 +10,9 @@ public class MenuSection : Entity<MenuSectionId>
         Name = name;
         Description = description;
     }
+    private MenuSection()
+    {
+    }
 
     private List<MenuItem> _items = new();
     public string Name { get; set; }
@@ -37,9 +40,5 @@ public class MenuSection : Entity<MenuSectionId>
         Name = section.Name;
         Description = section.Description;
         _items = section._items;
-    }
-
-    private MenuSection()
-    {
     }
 }

@@ -22,6 +22,9 @@ public class Reservation : Entity<ReservationId>
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
     }
+    private Reservation()
+    {
+    }
 
     public int GuestCount { get; private set; }
     public ReservationStatus Status { get; private set; } // PendingGuestConfirmation, Reserved, Cancelled
@@ -58,9 +61,5 @@ public class Reservation : Entity<ReservationId>
     public void UpdateGuestCount(int guestCount)
     {
         GuestCount = guestCount;
-    }
-
-    private Reservation()
-    {
     }
 }

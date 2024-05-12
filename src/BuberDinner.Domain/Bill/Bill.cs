@@ -6,7 +6,7 @@ using BuberDinner.Domain.Models;
 
 namespace BuberDinner.Domain.Bill;
 
-public sealed class Bill : AggregateRoot<BillId>
+public sealed class Bill : AggregateRoot<BillId, Guid>
 {
     private Bill(BillId id, DinnerId dinnerId, GuestId guestId, HostId hostId, Price price, DateTime createdDateTime, DateTime updatedDateTime) : base(id)
     {
@@ -16,6 +16,9 @@ public sealed class Bill : AggregateRoot<BillId>
         Price = price;
         CreatedDateTime = createdDateTime;
         UpdatedDateTime = updatedDateTime;
+    }
+    private Bill()
+    {
     }
 
     public DinnerId DinnerId { get; private set; }
@@ -40,9 +43,5 @@ public sealed class Bill : AggregateRoot<BillId>
             price,
             DateTime.UtcNow,
             DateTime.UtcNow);
-    }
-
-    private Bill()
-    {
     }
 }

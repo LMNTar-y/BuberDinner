@@ -2,13 +2,13 @@
 
 namespace BuberDinner.Domain.Dinner.ValueObjects;
 
-public class ReservationId : ValueObject
+public class ReservationId : AggregateRootId<Guid>
 {
     private ReservationId(Guid value)
     {
         Value = value;
     }
-    public Guid Value { get; set; }
+    public override Guid Value { get; protected set; }
 
     public static ReservationId CreateNew()
     {

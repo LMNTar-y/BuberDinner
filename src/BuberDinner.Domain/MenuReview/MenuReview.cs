@@ -7,7 +7,7 @@ using BuberDinner.Domain.Models;
 
 namespace BuberDinner.Domain.MenuReview;
 
-public class MenuReview : AggregateRoot<MenuReviewId>
+public class MenuReview : AggregateRoot<MenuReviewId, Guid>
 {
     private MenuReview(
         MenuReviewId menuReviewId,
