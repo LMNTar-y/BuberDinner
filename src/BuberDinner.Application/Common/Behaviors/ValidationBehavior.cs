@@ -33,6 +33,6 @@ public class ValidationBehavior<TRequest, TResponse>(IValidator<TRequest>? valid
                 })
             .ToDictionary(x => x.Key, x => x.Values);
 
-        throw new Domain.Exceptions.ValidationException(errors);
+        throw new Domain.Common.Exceptions.ValidationException(errors);
     }
 }

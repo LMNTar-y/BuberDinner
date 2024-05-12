@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using BuberDinner.Domain.Exceptions;
+using BuberDinner.Domain.Common.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace BuberDinner.Api.Middlewares;

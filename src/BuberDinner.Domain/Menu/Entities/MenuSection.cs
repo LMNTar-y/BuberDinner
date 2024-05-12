@@ -1,5 +1,5 @@
-﻿using BuberDinner.Domain.Menu.ValueObjects;
-using BuberDinner.Domain.Models;
+﻿using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Menu.ValueObjects;
 
 namespace BuberDinner.Domain.Menu.Entities;
 

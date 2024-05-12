@@ -1,29 +1,40 @@
-﻿using BuberDinner.Domain.Menu;
+﻿using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Menu;
+using BuberDinner.Infrastructure.Persistence.Interceptors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Reflection;
 
-namespace BuberDinner.Infrastructure.Persistence
+namespace BuberDinner.Infrastructure.Persistence;
+
+public class BuberDinnerDbContext : DbContext
 {
-    public class BuberDinnerDbContext : DbContext
+    private readonly PublishDomainEventInterceptor _publishDomainEventInterceptor;
+    public BuberDinnerDbContext(DbContextOptions<BuberDinnerDbContext> options, PublishDomainEventInterceptor publishDomainEventInterceptor) : base(options)
     {
-        public BuberDinnerDbContext(DbContextOptions<BuberDinnerDbContext> options) : base(options)
-        {
-        }
+        _publishDomainEventInterceptor = publishDomainEventInterceptor ?? throw new ArgumentNullException(nameof(publishDomainEventInterceptor));
+    }
 
-        public DbSet<Menu> Menus { get; set; } = null!;
+    public DbSet<Menu> Menus { get; set; } = null!;
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Model.GetEntityTypes()
-                .SelectMany(e => e.GetProperties())
-                .Where(p => p.IsPrimaryKey())
-                .ToList()
-                .ForEach(p => p.ValueGenerated = ValueGenerated.Never);
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.AddInterceptors(_publishDomainEventInterceptor);
+        base.OnConfiguring(optionsBuilder);
+    }
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Model.GetEntityTypes()
+            .SelectMany(e => e.GetProperties())
+            .Where(p => p.IsPrimaryKey())
+            .ToList()
+            .ForEach(p => p.ValueGenerated = ValueGenerated.Never);
 
-            base.OnModelCreating(modelBuilder);
-        }
+        modelBuilder
+            .Ignore<List<IDomainEvent>>()
+            .ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        base.OnModelCreating(modelBuilder);
     }
 }

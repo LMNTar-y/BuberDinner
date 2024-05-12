@@ -1,9 +1,18 @@
 ﻿#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-namespace BuberDinner.Domain.Models;
+namespace BuberDinner.Domain.Common.Models;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>>, IEqualityComparer<Entity<TId>>
-    where TId : notnull
+public abstract class Entity<TId> : IEquatable<Entity<TId>>, IEqualityComparer<Entity<TId>>, IHasDomainEvents
+    where TId : ValueObject
 {
+    private readonly List<IDomainEvent> _domainEvents = new();
+    public TId Id { get; protected set; }
+
+    public IReadOnlyList<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public void ClearDomainEvents()
+    {
+        _domainEvents.Clear();
+    }
+
     protected Entity(TId id)
     {
         Id = id;
@@ -13,7 +22,10 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>, IEqualityComparer<E
     {
     }
 
-    public TId Id { get; protected set; }
+    protected void AddDomainEvent(IDomainEvent domainEvent)
+    {
+        _domainEvents.Add(domainEvent);
+    }
 
     public bool Equals(Entity<TId>? other)
     {

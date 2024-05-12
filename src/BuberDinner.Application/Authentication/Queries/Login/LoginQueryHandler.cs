@@ -1,7 +1,7 @@
 ﻿using BuberDinner.Application.Authentication.Common;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
-using BuberDinner.Domain.Exceptions;
+using BuberDinner.Domain.Common.Exceptions;
 using MediatR;
 
 namespace BuberDinner.Application.Authentication.Queries.Login;

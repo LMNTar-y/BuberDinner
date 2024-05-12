@@ -1,4 +1,4 @@
-﻿namespace BuberDinner.Domain.Exceptions;
+﻿namespace BuberDinner.Domain.Common.Exceptions;
 
 public class ValidationException(IDictionary<string, string[]> errorsDictionary)
     : ApplicationException("Validation Failure", "One or more validation errors occurred")

@@ -1,4 +1,4 @@
-﻿using BuberDinner.Domain.Models;
+﻿using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.User;

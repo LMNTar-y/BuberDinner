@@ -1,3 +1,3 @@
-﻿namespace BuberDinner.Domain.Exceptions;
+﻿namespace BuberDinner.Domain.Common.Exceptions;
 
 public class UserNotFoundException(string? message) : Exception(message);

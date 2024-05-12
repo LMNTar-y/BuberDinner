@@ -1,10 +1,11 @@
-﻿using BuberDinner.Domain.Common.ValueObjects;
+﻿using BuberDinner.Domain.Common.Models;
+using BuberDinner.Domain.Common.ValueObjects;
 using BuberDinner.Domain.Dinner.ValueObjects;
 using BuberDinner.Domain.Host.ValueObjects;
 using BuberDinner.Domain.Menu.Entities;
+using BuberDinner.Domain.Menu.Events;
 using BuberDinner.Domain.Menu.ValueObjects;
 using BuberDinner.Domain.MenuReview.ValueObjects;
-using BuberDinner.Domain.Models;
 
 namespace BuberDinner.Domain.Menu;
 
@@ -42,14 +43,16 @@ public sealed class Menu : AggregateRoot<MenuId, Guid>
         string description, 
         HostId hostId)
     {
-        var MenuIdTest = MenuId.CreateUnique();
-        return new Menu(
+        var menu = new Menu(
             MenuId.CreateUnique(),
             name, 
             description, 
             hostId, 
             DateTime.UtcNow, 
             DateTime.UtcNow);
+
+        menu.AddDomainEvent(new MenuCreated(menu));
+        return menu;
     }
 
     public void AddSection(MenuSection section)

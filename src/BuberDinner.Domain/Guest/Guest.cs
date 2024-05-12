@@ -1,9 +1,9 @@
 ﻿using BuberDinner.Domain.Bill.ValueObjects;
+using BuberDinner.Domain.Common.Models;
 using BuberDinner.Domain.Dinner.ValueObjects;
 using BuberDinner.Domain.Guest.Entities;
 using BuberDinner.Domain.Guest.ValuesObjects;
 using BuberDinner.Domain.MenuReview.ValueObjects;
-using BuberDinner.Domain.Models;
 using BuberDinner.Domain.User.ValueObjects;
 
 namespace BuberDinner.Domain.Guest;
