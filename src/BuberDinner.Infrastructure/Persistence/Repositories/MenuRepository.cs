@@ -8,14 +8,14 @@ public class MenuRepository(BuberDinnerDbContext context) : IMenuRepository
 {
     private readonly BuberDinnerDbContext _context = context ?? throw new ArgumentNullException(nameof(context));
 
-    public void Add(Menu menu)
+    public async Task Add(Menu menu)
     {
         _context.Add(menu);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public Menu? GetById(Guid id)
+    public async Task<Menu?> GetById(Guid id)
     {
-        return _context.Menus.AsNoTracking().SingleOrDefault(m => m.Id.Value.Equals(id));
+        return await _context.Menus.AsNoTracking().SingleOrDefaultAsync(m => m.Id.Value.Equals(id));
     }
 }

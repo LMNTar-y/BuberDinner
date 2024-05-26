@@ -11,8 +11,6 @@ public class CreateMenuCommandHandler(IMenuRepository menuRepository) : IRequest
 
     public async Task<Menu> Handle(CreateMenuCommand command, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-            
         var menu = Menu.Create(command.Name, command.Description, command.HostId);
 
         foreach (var section in command.Sections)
@@ -27,7 +25,7 @@ public class CreateMenuCommandHandler(IMenuRepository menuRepository) : IRequest
             menu.AddSection(menuSection);
         }
             
-        _menuRepository.Add(menu);
+        await _menuRepository.Add(menu);
             
         return menu;
     }

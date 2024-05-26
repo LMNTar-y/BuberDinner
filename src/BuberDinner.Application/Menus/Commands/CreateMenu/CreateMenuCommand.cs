@@ -6,14 +6,14 @@ namespace BuberDinner.Application.Menus.Commands.CreateMenu;
 public record CreateMenuCommand(
     string Name,
     string Description,
-    List<MenuSectionCommand> Sections,
+    List<CreateMenuSectionCommand> Sections,
     string HostId) : IRequest<Menu>;
 
-public record MenuSectionCommand(
+public record CreateMenuSectionCommand(
     string Name,
     string Description,
-    List<MenuItemCommand> Items);
+    List<CreateMenuItemCommand> Items);
 
-public record MenuItemCommand(
+public record CreateMenuItemCommand(
     string Name,
     string Description);
