@@ -1,6 +1,6 @@
-@BuberDinner.Api_Dinners = https://localhost:7295/Dinners
+@BuberDinner_Api_Dinners = https://localhost:7295/Dinners
 
-GET {{BuberDinner.Api_Dinners}}
+GET {{BuberDinner_Api_Dinners}}
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MzE5YzliNC03MTE4LTRjZmItYWU1OC1iYzY0MWVmN2E4ZTkiLCJnaXZlbl9uYW1lIjoiRmlyc3ROYW1lIiwiZmFtaWx5X25hbWUiOiJMYXN0TmFtZSIsImp0aSI6ImRlYWRmZGY4LTJmMDgtNDlmZi05MGU3LWE1ZmNiNDY1OWUxNSIsImV4cCI6MTcxMjk1MTk5NywiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.1BbRbRkMBxTd3Rg1dEP2zyuDAJBm72y0q-d9hOL4hjc
